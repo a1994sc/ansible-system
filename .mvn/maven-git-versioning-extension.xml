@@ -7,17 +7,26 @@
       <pattern>main</pattern>
       <describeTagPattern><![CDATA[v(?<name>.*)]]></describeTagPattern>
       <version>${describe.tag.version}-${describe.distance}</version>
+      <properties>
+        <galaxy.version>${describe.tag.version.major}.${describe.tag.version.minor}.${describe.tag.version.patch.next}-dev</galaxy.version>
+      </properties>
     </ref>
 
     <ref type="branch">
       <pattern>.+</pattern>
       <describeTagPattern><![CDATA[v(?<name>.*)]]></describeTagPattern>
       <version>${describe.tag.version}-${describe.distance}-${ref.slug}</version>
+      <properties>
+        <galaxy.version>${describe.tag.version.major}.${describe.tag.version.minor}.${describe.tag.version.patch.next}-dev-${ref.slug}</galaxy.version>
+      </properties>
     </ref>
 
     <ref type="tag">
       <pattern><![CDATA[v(?<version>.*)]]></pattern>
       <version>${ref.version}</version>
+      <properties>
+        <galaxy.version>${ref.version}</galaxy.version>
+      </properties>
     </ref>
   </refs>
 
