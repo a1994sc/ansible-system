@@ -1,6 +1,6 @@
 namespace: ascii17
 name: system
-version: 0.0.1-dev-test
+version: 0.0.1-dev
 readme: README.md
 authors:
   - Allen Conlon <allen@conlon.dev>

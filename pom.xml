@@ -7,6 +7,11 @@
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
     <maven.install.skip>true</maven.install.skip>
+    <version.plugin.assembly>3.7.0</version.plugin.assembly>
+    <version.plugin.clean>3.4.1</version.plugin.clean>
+    <version.plugin.ant>3.0.0</version.plugin.ant>
+    <version.plugin.exec>3.4.0</version.plugin.exec>
+    <!-- managed via git-versioning extension -->
     <galaxy.version>0</galaxy.version>
   </properties>
   <version>0</version>
@@ -14,7 +19,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>3.4.1</version>
+        <version>${version.plugin.clean}</version>
         <executions>
           <execution>
             <id>auto-clean</id>
@@ -27,6 +32,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
+        <version>${version.plugin.ant}</version>
         <executions>
           <execution>
             <id>yq-ansible-exp-to-file</id>
@@ -45,6 +51,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
+        <version>${version.plugin.exec}</version>
         <executions>
           <execution>
             <id>set-galaxy-version</id>
@@ -88,6 +95,7 @@
       <!-- Create Tar -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
+        <version>${version.plugin.assembly}</version>
         <executions>
           <execution>
             <id>make-assembly</id>
