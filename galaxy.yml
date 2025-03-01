@@ -1,0 +1,21 @@
+namespace: ascii17
+name: system_config
+version: 0.0.1-dev
+readme: README.md
+authors:
+  - Allen Conlon <allen@conlon.dev>
+description: Plays for configuring generic systems
+dependencies: {}
+repository: https://github.com/a1994sc/ansible-system
+issues: https://github.com/a1994sc/ansible-system/issues
+build_ignore:
+  - .direnv
+  - .envrc
+  - .github
+  - .gitignore
+  - .mvn
+  - target
+  - '*.xml'
+  - '*.nix'
+  - .pre-commit-config.yaml
+  - flake.lock
