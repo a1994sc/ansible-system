@@ -9,11 +9,13 @@ dependencies: {}
 repository: https://github.com/A1994SC/playbooks
 issues: https://github.com/A1994SC/playbooks/issues
 build_ignore:
-  - .vscode
   - .direnv
+  - .envrc
+  - .github
+  - .gitignore
+  - .mvn
   - target
   - '*.xml'
   - '*.nix'
-  - Jenkinsfile
-  - CODEOWNERS
+  - .pre-commit-config.yaml
   - flake.lock
