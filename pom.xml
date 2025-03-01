@@ -9,7 +9,7 @@
     <maven.install.skip>true</maven.install.skip>
     <version.plugin.assembly>3.7.1</version.plugin.assembly>
     <version.plugin.clean>3.4.1</version.plugin.clean>
-    <version.plugin.ant>3.0.0</version.plugin.ant>
+    <version.plugin.ant>3.1.0</version.plugin.ant>
     <version.plugin.exec>3.4.0</version.plugin.exec>
     <!-- managed via git-versioning extension -->
     <galaxy.version>0</galaxy.version>
