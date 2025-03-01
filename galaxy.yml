@@ -1,6 +1,6 @@
 namespace: ascii17
 name: system
-version: 0.0.0-0
+version: 0.0.1-dev-test
 readme: README.md
 authors:
   - Allen Conlon <allen@conlon.dev>
@@ -8,3 +8,14 @@ description: Plays for configuring generic systems
 dependencies: {}
 repository: https://github.com/A1994SC/playbooks
 issues: https://github.com/A1994SC/playbooks/issues
+build_ignore:
+  - .direnv
+  - .envrc
+  - .github
+  - .gitignore
+  - .mvn
+  - target
+  - '*.xml'
+  - '*.nix'
+  - .pre-commit-config.yaml
+  - flake.lock

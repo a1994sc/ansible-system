@@ -1,0 +1,22 @@
+name: Publish package to GitHub Packages
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: Set up Java for publishing to GitHub Packages
+        uses: actions/setup-java@v4.7.0
+        with:
+          java-version: '21'
+          distribution: oracle
+      - name: Publish to GitHub Packages
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
