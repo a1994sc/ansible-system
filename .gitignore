@@ -444,3 +444,4 @@ inv/
 /result*
 .direnv
 .pre-commit-config.yaml
+.git-versioned-pom.xml
