@@ -1,0 +1,10 @@
+namespace: ascii17
+name: system
+version: 0.0.0-0
+readme: README.md
+authors:
+  - Allen Conlon <allen@conlon.dev>
+description: Plays for configuring generic systems
+dependencies: {}
+repository: https://github.com/A1994SC/playbooks
+issues: https://github.com/A1994SC/playbooks/issues

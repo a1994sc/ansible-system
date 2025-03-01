@@ -1,23 +1,29 @@
 <configuration xmlns="https://github.com/qoomon/maven-git-versioning-extension"
                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xsi:schemaLocation="https://github.com/qoomon/maven-git-versioning-extension https://qoomon.github.io/maven-git-versioning-extension/configuration-7.0.0.xsd">
+               xsi:schemaLocation="https://github.com/qoomon/maven-git-versioning-extension https://qoomon.github.io/maven-git-versioning-extension/configuration-9.8.1.xsd">
 
-    <refs>
-        <ref type="branch">
-            <pattern>.+</pattern>
-            <describeTagPattern><![CDATA[v(?<version>.*)]]></describeTagPattern>
-            <version>${describe.tag.version}-${ref}-SNAPSHOT</version>
-        </ref>
+  <refs>
+    <ref type="branch">
+      <pattern>main</pattern>
+      <describeTagPattern><![CDATA[v(?<name>.*)]]></describeTagPattern>
+      <version>${describe.tag.version}-${describe.distance}</version>
+    </ref>
 
-        <ref type="tag">
-            <pattern><![CDATA[v(?<version>.*)]]></pattern>
-            <version>${ref.version}</version>
-        </ref>
-    </refs>
+    <ref type="branch">
+      <pattern>.+</pattern>
+      <describeTagPattern><![CDATA[v(?<name>.*)]]></describeTagPattern>
+      <version>${describe.tag.version}-${describe.distance}-${ref.slug}</version>
+    </ref>
 
-    <!-- optional fallback configuration in case of no matching ref configuration-->
-    <rev>
-        <version>${commit}</version>
-    </rev>
+    <ref type="tag">
+      <pattern><![CDATA[v(?<version>.*)]]></pattern>
+      <version>${ref.version}</version>
+    </ref>
+  </refs>
+
+  <!-- optional fallback configuration in case of no matching ref configuration-->
+  <rev>
+    <version>${version}</version>
+  </rev>
 
 </configuration>
