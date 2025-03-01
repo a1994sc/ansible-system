@@ -65,6 +65,7 @@
         ]);
         shellHook = self.checks.${system}.pre-commit-check.shellHook;
         buildInputs = self.checks.${system}.pre-commit-check.enabledPackages ++ [
+          pythonWithPackages
           pkgs.mdbook
           pkgs.ansible
         ];
