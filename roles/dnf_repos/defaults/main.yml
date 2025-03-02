@@ -1,0 +1,3 @@
+---
+dnf_disable: false
+dnf_disable_repos: []

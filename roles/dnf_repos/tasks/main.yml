@@ -1,0 +1,45 @@
+---
+- name: Disable repos
+  when: dnf_disable is true and (dnf_disable_repos | length > 0)
+  vars:
+    times: "{{ range(0, 5) }}"
+  loop: "{{ yum_disable_repos | product(times) | list }}"
+  ansible.builtin.lineinfile:
+    path: /etc/yum.repos.d/{{ item.0 }}.repo
+    regexp: '^enabled=1'
+    line: enabled=0
+
+- name: Create GPG files
+  ansible.builtin.copy:
+    dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-{{ item.name }}
+    content: "{{ item.gpg }}"
+  with_items: "{{ dnf_gpg }}"
+  when: dnf_gpg is defined and (dnf_gpg | length > 0)
+  no_log: true
+  register: gpg_file
+
+- name: Update system trust
+  ansible.builtin.command:
+    argv:
+      - update-ca-trust
+      - extract
+  changed_when: false
+  when: gpg_file.changed
+
+- name: Create Repos
+  ansible.builtin.yum_repository:
+    name: "{{ item.name }}"
+    baseurl: "{{ item.baseurl }}"
+    description: "{{ item.description | default(omit) }}"
+    enabled: "{{ item.enabled | default(true) }}"
+    enablegroups: "{{ item.enablegroups | default(omit) }}"
+    exclude: "{{ item.exclude | default(omit) }}"
+    file: "{{ item.file | default(omit) }}"
+    gpgcheck: "{{ item.gpgcheck | default(omit) }}"
+    gpgkey: "{{ item.gpgkey | default(omit) }}"
+    username: "{{ item.username | default(omit) }}"
+    password: "{{ item.password | default(omit) }}"
+    metadata_expire: "{{ item.metadata_expire | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ dnf_repos }}"
+  when: dnf_repos is defined and (dnf_repos | length > 0)
