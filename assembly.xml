@@ -15,8 +15,6 @@
         <exclude>**/archive-tmp/**</exclude>
         <exclude>**/scripts/**</exclude>
         <exclude>*.yq</exclude>
-        <exclude>*.jar</exclude>
-        <exclude>**/maven-archiver/**</exclude>
       </excludes>
     </fileSet>
   </fileSets>
